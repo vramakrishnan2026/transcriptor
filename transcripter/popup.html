@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<main>
+  <!-- Looking -->
+  <section id="v-loading">
+    <p class="muted">Looking for a transcript…</p>
+  </section>
+
+  <!-- Not found -->
+  <section id="v-missing" hidden>
+    <p class="title">No transcript found</p>
+    <p class="muted" id="missing-msg"></p>
+    <button class="secondary" id="retry">Check again</button>
+  </section>
+
+  <!-- Ready -->
+  <section id="v-ready" hidden>
+    <p class="eyebrow">Recording</p>
+    <p class="title" id="m-title"></p>
+    <p class="muted" id="m-meta"></p>
+    <div class="row">
+      <span id="lbl-format">Format</span>
+      <div class="seg" role="radiogroup" aria-labelledby="lbl-format">
+        <button role="radio" data-format="txt">Text</button>
+        <button role="radio" data-format="md">Markdown</button>
+      </div>
+    </div>
+    <div class="row">
+      <label for="opt-ts">Timestamps</label>
+      <input type="checkbox" id="opt-ts" class="toggle">
+    </div>
+    <div class="row last range">
+      <span id="lbl-range">Time range</span>
+      <div class="times" role="group" aria-labelledby="lbl-range">
+        <input id="opt-from" inputmode="numeric" placeholder="0:00" aria-label="From (mm:ss)" autocomplete="off">
+        <span aria-hidden="true">to</span>
+        <input id="opt-to" inputmode="numeric" placeholder="end" aria-label="To (mm:ss)" autocomplete="off">
+      </div>
+    </div>
+    <p class="note err" id="range-err" hidden></p>
+    <p class="note" id="ready-note" hidden></p>
+    <button class="primary" id="export">Export transcript</button>
+  </section>
+
+  <!-- Running -->
+  <section id="v-running" hidden>
+    <p class="eyebrow">Recording</p>
+    <p class="title" id="r-title"></p>
+    <div class="bar" role="progressbar" aria-label="Export progress" aria-valuemin="0" aria-valuemax="100"><div id="bar-fill"></div></div>
+    <p class="muted" id="r-status">Starting…</p>
+    <div class="pair">
+      <button class="secondary" id="stop-save">Stop and save</button>
+      <button class="secondary" id="cancel">Cancel</button>
+    </div>
+    <p class="note">You can close this popup. The file still downloads.</p>
+  </section>
+
+  <!-- Done -->
+  <section id="v-done" hidden>
+    <p class="title ok">Transcript saved</p>
+    <p class="muted" id="d-meta"></p>
+    <div class="preview" id="d-preview"></div>
+    <div class="pair">
+      <button class="secondary" id="copy">Copy</button>
+      <button class="secondary" id="save-again">Save again</button>
+    </div>
+    <button class="link" id="new-export">Export with different options</button>
+  </section>
+
+  <!-- Error -->
+  <section id="v-error" hidden>
+    <p class="title err">Export didn't finish</p>
+    <p class="muted" id="error-msg"></p>
+    <button class="secondary" id="error-retry">Try again</button>
+  </section>
+  <footer>
+    <button class="link" id="help">How to use</button>
+    <span>Made by Vinay</span>
+  </footer>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>

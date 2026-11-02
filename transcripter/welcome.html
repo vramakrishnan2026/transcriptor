@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transcripter is installed</title><link rel="icon" href="icons/icon32.png"><style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2433;--muted:#5b6475;--faint:#8a92a3;--line:#e1e5ec;--accent:#24406e;--soft:#e4ebf6;--mint:#7dd3be;--code:#eef1f5}
+@media (prefers-color-scheme:dark){:root{--bg:#18191f;--card:#1f2129;--ink:#e8eaf0;--muted:#a6adbb;--faint:#7d8494;--line:#353946;--accent:#8fb0e6;--soft:#2c3a55;--code:#2a2d38}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:48px 24px 64px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+header img{width:56px;height:56px}
+h1{font-size:28px;line-height:1.2;margin:0;font-weight:600}
+.lede{color:var(--muted);font-size:17px;margin:12px 0 36px;max-width:60ch}
+h2{font-size:19px;margin:44px 0 14px;font-weight:600}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+ol.steps>li{counter-increment:s;position:relative;padding:0 0 26px 48px}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--accent);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+ol.steps>li:not(:last-child)::after{content:"";position:absolute;left:14.5px;top:36px;bottom:6px;width:1px;background:var(--line)}
+.steps strong{display:block;font-size:16px;margin-bottom:2px}
+.steps p{margin:0;color:var(--muted);max-width:62ch}
+.shot{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:#fff;max-width:300px;display:block}
+.shot.badge{max-width:260px;border:0;background:none}
+.shots{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.shots figure{margin:0}
+.shots .shot{margin-top:0;max-width:220px}
+figcaption{font-size:13px;color:var(--faint);margin-top:6px}
+.ui{font-weight:600;color:var(--ink)}
+code{font:13px Consolas,ui-monospace,monospace;background:var(--code);padding:2px 6px;border-radius:4px;color:var(--ink)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.box p{margin:0 0 10px;color:var(--muted)} .box p:last-child{margin:0}
+.box b{color:var(--ink)}
+dl{margin:0}
+dt{font-weight:600;margin-top:14px} dt:first-child{margin-top:0}
+dd{margin:2px 0 0;color:var(--muted)}
+.br{border-collapse:collapse;margin:10px 0 6px;font-size:14px}
+.br td{padding:5px 18px 5px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.br tr:last-child td{border-bottom:0}
+.br td:first-child{color:var(--ink);font-weight:600}
+p.small{font-size:13px;color:var(--faint);margin-top:4px}
+
+.ps{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);align-items:stretch;margin:4px 0 8px}
+.ps-col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.ps-col h3{margin:0 0 4px;font-size:16px;font-weight:600}
+.ps-col .sub{margin:0 0 14px;color:var(--muted);font-size:13.5px}
+.ps-arrow{display:flex;align-items:center;justify-content:center;color:var(--faint)}
+.pane{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
+.pane-head{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600}
+.dl-off{display:flex;align-items:center;gap:5px;font-weight:400;color:var(--faint);font-size:12px;text-decoration:line-through}
+.pane-body{position:relative;padding:6px 10px}
+.ln{padding:5px 0;font-size:12.5px;line-height:1.4}
+.ln b{font-weight:600}.ln span{color:var(--faint);margin-left:5px}
+.ln p{margin:0;color:var(--muted)}
+.ghost{height:9px;border-radius:4px;background:var(--line);margin:7px 0}
+.fade-top{opacity:.35}.fade-bot{opacity:.2}
+.sel{background:var(--soft);border-radius:4px;outline:1px dashed var(--accent);outline-offset:1px}
+.hidden-note{font-size:12px;color:var(--faint);text-align:center;padding:4px 0 8px}
+.loop{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:14px;font-size:12.5px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--bg);color:var(--ink)}
+.chev{color:var(--faint)}
+.repeat{display:flex;align-items:center;gap:6px;margin-top:10px;color:#b3261e;font-size:13px;font-weight:600}
+@media (prefers-color-scheme:dark){.repeat{color:#f08a80}}
+.click{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.click img{width:36px;height:36px}
+.down{height:22px;margin:6px 0 6px 17px;border-left:2px dotted var(--faint)}
+.file{border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:12px}
+.file-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.file-top svg{flex:none}
+.file-name{font-weight:600;font-size:13.5px;line-height:1.3;overflow-wrap:normal}
+.file-meta{font-size:12px;color:var(--faint)}
+.file pre{margin:0;font:12px/1.5 Consolas,ui-monospace,monospace;color:var(--muted);white-space:pre-wrap;border-top:1px solid var(--line);padding-top:8px}
+.gain{display:flex;align-items:center;gap:6px;margin-top:12px;color:#1f7a5c;font-size:13px;font-weight:600}
+@media (prefers-color-scheme:dark){.gain{color:#5cc59b}}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.fact{border-top:2px solid var(--line);padding-top:8px}
+.fact b{display:block;font-size:17px;font-weight:600;margin-bottom:2px}
+.fact span{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.ps{grid-template-columns:1fr}.ps-arrow{transform:rotate(90deg);height:36px}.facts{grid-template-columns:1fr}}
+
+.hero{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style></head>
+<body><div class="wrap">
+<header><img src="icons/icon128.png" alt=""><h1>Transcripter is installed</h1></header>
+<p class="lede">Transcripter saves the full transcript of a Teams meeting recording as a clean text file, with speakers and timestamps, in one click.</p>
+<h2>First, pin it to your toolbar</h2>
+<div class="box"><p>Open the extensions menu in your toolbar (a puzzle-piece icon in most browsers) and pin <b>Transcripter</b>. In Microsoft Edge, click the eye icon next to it instead. The VR icon will then stay in your toolbar.</p></div>
+
+<h2>Export a transcript</h2>
+<ol class="steps">
+  <li><strong>Open the meeting recording in your browser</strong>
+    <p>Recordings open on a SharePoint page. If Teams opens it in the desktop app, use <span class="ui">Open in browser</span>. Make sure you're in the browser where Transcripter is installed.</p>
+    <p><b>Tip:</b> press play for a moment and let the page finish loading before you export. Transcripter pauses the video for you.</p></li>
+  <li><strong>Click the VR icon in the toolbar</strong>
+    <p>Transcripter finds the meeting and shows its title, date, and number of lines. If the Transcript panel is closed, it opens it for you.</p>
+    <img class="shot" src="images/popup-ready.png" alt="Transcripter popup showing the meeting title, format options, and the Export transcript button"></li>
+  <li><strong>Choose your options and click Export transcript</strong>
+    <p><span class="ui">Text</span> works everywhere; <span class="ui">Markdown</span> is handy for notes apps. Turn timestamps off for a cleaner read. Your choices are remembered.</p>
+    <p>Only need part of the meeting? Enter a <span class="ui">Time range</span> in mm:ss, such as <code>12:00</code> to <code>20:00</code>. Leave either box empty to start from the beginning or run to the end.</p></li>
+  <li><strong>Leave the recording tab alone while it works</strong>
+    <p>The video pauses and the transcript scrolls by itself. A badge in the corner of the page shows progress. You can close the popup; the export keeps going. Need it sooner? Click <span class="ui">Stop and save</span> to download everything collected so far; the file is marked as partial.</p>
+    <img class="shot badge" src="images/badge.png" alt="Progress badge on the recording page"></li>
+  <li><strong>Find the file in your Downloads</strong>
+    <p>It's named after the meeting and its date. Open the popup again to see a preview, copy the text, or save it once more.</p>
+    <img class="shot" src="images/popup-done.png" alt="Transcripter popup after export, showing a preview and Copy and Save again buttons"></li>
+</ol>
+
+<h2>Good to know</h2>
+<div class="box">
+  <p><b>Private by design.</b> Transcripter runs only when you click it, only on SharePoint recording pages, and never sends the transcript anywhere. Everything happens in your browser.</p>
+  <p><b>Only what you can already see.</b> It exports transcripts you have access to view. Follow your team's rules for sharing meeting content.</p>
+  <p><b>Copying to the clipboard.</b> Windows clipboard history and sync can keep copied text. For sensitive meetings, use the downloaded file instead.</p>
+</div>
+
+<h2>If something goes wrong</h2>
+<dl>
+  <dt>"No transcript found"</dt>
+  <dd>The recording may not have a transcript, or the panel didn't open. Click <span class="ui">Transcript</span> on the right side of the player, then <span class="ui">Check again</span>.</dd>
+  <dt>"Some lines may be missing"</dt>
+  <dd>Export again. Keep the recording tab visible and don't scroll the transcript while it runs.</dd>
+  <dt>It stopped working after a Teams update</dt>
+  <dd>Microsoft occasionally changes the recording page. Let Vinay know so the extension can be updated.</dd>
+</dl>
+
+<h2>Open this guide again</h2>
+<div class="box"><p>Click the VR icon, then <b>How to use</b> at the bottom of the popup.</p></div>
+<footer><span>Transcripter 1.3.0</span><span>Made by Vinay</span></footer>
+</div></body></html>
