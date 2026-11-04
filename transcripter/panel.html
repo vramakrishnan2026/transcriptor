@@ -1,10 +1,16 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="popup.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transcripter</title>
+<link rel="stylesheet" href="panel.css">
 </head>
 <body>
+<header class="brand">
+  <img src="icons/icon32.png" alt="" width="20" height="20">
+  <span>Transcripter</span>
+</header>
 <main>
   <!-- Looking -->
   <section id="v-loading">
@@ -45,24 +51,25 @@
     <p class="note err" id="range-err" hidden></p>
     <p class="note" id="ready-note" hidden></p>
     <button class="primary" id="export">Export transcript</button>
+    <p class="note">Tip: press play for a moment and let the page finish loading first. Transcripter pauses the video for you.</p>
   </section>
 
   <!-- Running -->
   <section id="v-running" hidden>
     <p class="eyebrow">Recording</p>
     <p class="title" id="r-title"></p>
-    <div class="bar" role="progressbar" aria-label="Export progress" aria-valuemin="0" aria-valuemax="100"><div id="bar-fill"></div></div>
+    <div class="bar" id="bar" role="progressbar" aria-label="Export progress" aria-valuemin="0" aria-valuemax="100"><div id="bar-fill"></div></div>
     <p class="muted" id="r-status">Starting…</p>
     <div class="pair">
       <button class="secondary" id="stop-save">Stop and save</button>
       <button class="secondary" id="cancel">Cancel</button>
     </div>
-    <p class="note">You can close this popup. The file still downloads.</p>
+    <p class="note">Keep the recording tab open while it works.</p>
   </section>
 
   <!-- Done -->
   <section id="v-done" hidden>
-    <p class="title ok">Transcript saved</p>
+    <p class="title ok" id="d-title">Transcript saved</p>
     <p class="muted" id="d-meta"></p>
     <div class="preview" id="d-preview"></div>
     <div class="pair">
@@ -70,6 +77,40 @@
       <button class="secondary" id="save-again">Save again</button>
     </div>
     <button class="link" id="new-export">Export with different options</button>
+
+    <!-- Key moments -->
+    <div class="card" id="km" hidden>
+      <p class="card-title">Key moments with screenshots</p>
+
+      <div id="km-start">
+        <p class="muted">Let an AI pick the important moments, then capture what was on screen at each one.</p>
+        <ol class="mini">
+          <li><b>Copy the prompt</b> and paste it into your AI assistant.
+            <button class="secondary" id="km-prompt">Copy AI prompt</button></li>
+          <li><b>Paste the AI's reply here.</b>
+            <textarea id="km-reply" rows="6" spellcheck="false" placeholder="12:34 | Pricing decision | Team agreed to the new tier&#10;18:02 | Wiring diagram shown | Board layout reviewed on screen"></textarea>
+            <p class="note" id="km-found" aria-live="polite"></p></li>
+          <li><b>Capture</b> a frame from the recording at each moment.
+            <button class="primary" id="km-capture" disabled>Capture screenshots</button></li>
+        </ol>
+      </div>
+
+      <div id="km-running" hidden>
+        <div class="bar"><div id="km-bar-fill"></div></div>
+        <p class="muted" id="km-status">Starting…</p>
+        <button class="secondary" id="km-cancel">Stop</button>
+        <p class="note">Keep the recording tab in front. The video jumps to each moment and goes back to where it was at the end.</p>
+      </div>
+
+      <div id="km-done" hidden>
+        <p class="ok-text" id="km-done-meta"></p>
+        <p class="note" id="km-done-note" hidden></p>
+        <div class="thumbs" id="km-thumbs"></div>
+        <button class="primary" id="km-open">Open report (save as PDF)</button>
+        <button class="secondary gap" id="km-save">Save as HTML</button>
+        <button class="link" id="km-again">Use a different AI reply</button>
+      </div>
+    </div>
   </section>
 
   <!-- Error -->
@@ -78,11 +119,12 @@
     <p class="muted" id="error-msg"></p>
     <button class="secondary" id="error-retry">Try again</button>
   </section>
+
   <footer>
     <button class="link" id="help">How to use</button>
     <span>Made by Vinay</span>
   </footer>
 </main>
-<script src="popup.js"></script>
+<script src="panel.js"></script>
 </body>
 </html>

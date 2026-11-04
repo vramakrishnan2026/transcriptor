@@ -80,9 +80,9 @@ footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:v
 </style></head>
 <body><div class="wrap">
 <header><img src="icons/icon128.png" alt=""><h1>Transcripter is installed</h1></header>
-<p class="lede">Transcripter saves the full transcript of a Teams meeting recording as a clean text file, with speakers and timestamps, in one click.</p>
+<p class="lede">Transcripter saves the full transcript of a Teams meeting recording as a clean text file, with speakers and timestamps, in one click. It can also build a key-moments report with a screenshot from the recording at each important moment.</p>
 <h2>First, pin it to your toolbar</h2>
-<div class="box"><p>Open the extensions menu in your toolbar (a puzzle-piece icon in most browsers) and pin <b>Transcripter</b>. In Microsoft Edge, click the eye icon next to it instead. The VR icon will then stay in your toolbar.</p></div>
+<div class="box"><p>Open the extensions menu in your toolbar (a puzzle-piece icon in most browsers) and pin <b>Transcripter</b>. In Microsoft Edge, click the eye icon next to it instead. The VR icon will then stay in your toolbar.</p><p>Clicking it opens Transcripter in a <b>side panel</b> next to the page, so it stays open while you work. (In Opera and Vivaldi it opens as a small popup instead.)</p></div>
 
 <h2>Export a transcript</h2>
 <ol class="steps">
@@ -90,22 +90,39 @@ footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:v
     <p>Recordings open on a SharePoint page. If Teams opens it in the desktop app, use <span class="ui">Open in browser</span>. Make sure you're in the browser where Transcripter is installed.</p>
     <p><b>Tip:</b> press play for a moment and let the page finish loading before you export. Transcripter pauses the video for you.</p></li>
   <li><strong>Click the VR icon in the toolbar</strong>
-    <p>Transcripter finds the meeting and shows its title, date, and number of lines. If the Transcript panel is closed, it opens it for you.</p>
-    <img class="shot" src="images/popup-ready.png" alt="Transcripter popup showing the meeting title, format options, and the Export transcript button"></li>
+    <p>The side panel opens, finds the meeting, and shows its title, date, and number of lines. If the Transcript panel is closed, it opens it for you. The side panel follows the tab you're on, so switching to another recording updates it automatically.</p>
+    <img class="shot" src="images/panel-ready.png" alt="Transcripter side panel showing the meeting title, format options, and the Export transcript button"></li>
   <li><strong>Choose your options and click Export transcript</strong>
     <p><span class="ui">Text</span> works everywhere; <span class="ui">Markdown</span> is handy for notes apps. Turn timestamps off for a cleaner read. Your choices are remembered.</p>
     <p>Only need part of the meeting? Enter a <span class="ui">Time range</span> in mm:ss, such as <code>12:00</code> to <code>20:00</code>. Leave either box empty to start from the beginning or run to the end.</p></li>
   <li><strong>Leave the recording tab alone while it works</strong>
-    <p>The video pauses and the transcript scrolls by itself. A badge in the corner of the page shows progress. You can close the popup; the export keeps going. Need it sooner? Click <span class="ui">Stop and save</span> to download everything collected so far; the file is marked as partial.</p>
-    <img class="shot badge" src="images/badge.png" alt="Progress badge on the recording page"></li>
+    <p>The video pauses and the transcript scrolls by itself. The side panel and a badge in the corner of the page show progress. The export keeps going even if you close the panel. Need it sooner? Click <span class="ui">Stop and save</span> to download everything collected so far; the file is marked as partial.</p>
+    <img class="shot" src="images/panel-running.png" alt="Side panel showing export progress with Stop and save and Cancel buttons"></li>
   <li><strong>Find the file in your Downloads</strong>
-    <p>It's named after the meeting and its date. Open the popup again to see a preview, copy the text, or save it once more.</p>
-    <img class="shot" src="images/popup-done.png" alt="Transcripter popup after export, showing a preview and Copy and Save again buttons"></li>
+    <p>It's named after the meeting and its date. The panel shows a preview, and lets you copy the text or save it once more.</p>
+    <img class="shot" src="images/panel-done.png" alt="Side panel after export, showing a preview and Copy and Save again buttons"></li>
+</ol>
+
+<h2>Find key moments, with screenshots</h2>
+<p class="lede" style="margin:0 0 18px">After an export, the panel can help you pull out the moments that matter, with a picture of what was on screen at each one. Handy when a slide, drawing or demo was shared and the words alone don't tell the story.</p>
+<ol class="steps">
+  <li><strong>Click Copy AI prompt</strong>
+    <p>This copies the transcript together with instructions asking the AI to list the key moments, one per line, as <code>mm:ss | Title | Why it matters</code>. It looks out especially for moments where something was shown on screen.</p></li>
+  <li><strong>Paste it into your AI assistant</strong>
+    <p>Use whichever assistant you're allowed to use for meeting content. Copy its reply.</p></li>
+  <li><strong>Paste the reply into the panel</strong>
+    <p>Transcripter reads the timestamps and shows how many moments it found. It understands most formats, including numbered lists and bullets.</p>
+    <img class="shot" src="images/moments-start.png" alt="Key moments steps in the side panel, with an AI reply pasted in"></li>
+  <li><strong>Click Capture screenshots</strong>
+    <p>The video jumps to each moment and Transcripter grabs the frame. Keep the recording tab in front while it works; the video goes back to where it was at the end.</p></li>
+  <li><strong>Open the report or save it</strong>
+    <p><span class="ui">Open report</span> shows each moment with its screenshot, the AI's reason, and the transcript lines around it. Click <span class="ui">Save as PDF</span> at the top of the report, or use <span class="ui">Save as HTML</span> to keep a single file you can share.</p>
+    <img class="shot" src="images/moments-done.png" alt="Key moments captured, with thumbnails and buttons to open or save the report"></li>
 </ol>
 
 <h2>Good to know</h2>
 <div class="box">
-  <p><b>Private by design.</b> Transcripter runs only when you click it, only on SharePoint recording pages, and never sends the transcript anywhere. Everything happens in your browser.</p>
+  <p><b>Private by design.</b> Transcripter works only on SharePoint recording pages and never sends anything anywhere. Everything happens in your browser. The AI prompt is copied to your clipboard; you decide where to paste it.</p>
   <p><b>Only what you can already see.</b> It exports transcripts you have access to view. Follow your team's rules for sharing meeting content.</p>
   <p><b>Copying to the clipboard.</b> Windows clipboard history and sync can keep copied text. For sensitive meetings, use the downloaded file instead.</p>
 </div>
@@ -116,11 +133,15 @@ footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:v
   <dd>The recording may not have a transcript, or the panel didn't open. Click <span class="ui">Transcript</span> on the right side of the player, then <span class="ui">Check again</span>.</dd>
   <dt>"Some lines may be missing"</dt>
   <dd>Export again. Keep the recording tab visible and don't scroll the transcript while it runs.</dd>
+  <dt>"Transcripter wasn't allowed to capture the screen"</dt>
+  <dd>Some recordings protect their video frames, so Transcripter captures the visible tab instead. That needs permission the browser gives when you click the VR icon. Click it while the recording tab is open, then capture again.</dd>
+  <dt>A screenshot is black or shows the wrong thing</dt>
+  <dd>The screen may have been switching at that moment. Edit the time in the AI's reply to a few seconds later and capture again.</dd>
   <dt>It stopped working after a Teams update</dt>
   <dd>Microsoft occasionally changes the recording page. Let Vinay know so the extension can be updated.</dd>
 </dl>
 
 <h2>Open this guide again</h2>
-<div class="box"><p>Click the VR icon, then <b>How to use</b> at the bottom of the popup.</p></div>
-<footer><span>Transcripter 1.3.0</span><span>Made by Vinay</span></footer>
+<div class="box"><p>Click the VR icon, then <b>How to use</b> at the bottom of the panel.</p></div>
+<footer><span>Transcripter 1.4.0</span><span>Made by Vinay</span></footer>
 </div></body></html>

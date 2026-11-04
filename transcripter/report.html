@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Key moments</title>
+<link rel="icon" href="icons/icon32.png">
+<style>
+.tx-bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:10px 16px;background:#24406e;color:#fff;font:13px "Segoe UI",system-ui,sans-serif}
+.tx-bar span{margin-right:auto;opacity:.85}
+.tx-bar button{font:inherit;font-weight:600;cursor:pointer;border-radius:6px;padding:6px 14px;border:1px solid #fff;background:#fff;color:#24406e}
+.tx-bar button.ghost{background:transparent;color:#fff}
+@media print{.tx-bar{display:none}}
+</style>
+</head>
+<body>
+<div class="tx-bar"><span>Transcripter report</span><button class="ghost" id="tx-html">Save as HTML</button><button id="tx-pdf">Save as PDF</button></div>
+<div id="tx-root"><p style="font:14px system-ui;padding:24px">Loading report…</p></div>
+<script src="report.js"></script>
+</body>
+</html>
